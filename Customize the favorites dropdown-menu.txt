@@ -1,0 +1,11 @@
+<?php
+function custom_favorite_menu($actions) {
+   # Removing #
+   unset($actions['edit-comments.php']);
+   unset($actions['media-new.php']);
+   # Adding #
+   $actions['admin.php?your-plugin'] = array('Your Plugin', 'manage_options');
+   return $actions;
+}
+add_filter('favorite_actions', 'custom_favorite_menu');
+?>

@@ -1,0 +1,7 @@
+Increase memory limit
+
+Allowed memory size of bytes exhausted. What is up with this?
+
+WordPress has a built in memory limit to save you from badly written plugins that will eat up all your websites memory. The standard memory limit is set to 32MB, but it’s easy to increase. Just add the following in wp-config.php:
+	
+define('WP_MEMORY_LIMIT', '96M');

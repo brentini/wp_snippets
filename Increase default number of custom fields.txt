@@ -1,0 +1,7 @@
+<?php
+add_filter( 'postmeta_form_limit' , 'customfield_limit_increase' );
+function customfield_limit_increase( $limit ) {
+    $limit = 200;
+    return $limit;
+}
+?>

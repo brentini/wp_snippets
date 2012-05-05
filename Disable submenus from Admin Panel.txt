@@ -1,0 +1,8 @@
+function remove_submenus() {
+  global $submenu;
+    unset($submenu['index.php'][10]); // Removes 'Updates'.
+    unset($submenu['themes.php'][5]); // Removes 'Themes'.
+    unset($submenu['options-general.php'][15]); // Removes 'Writing'.
+    unset($submenu['options-general.php'][25]); // Removes 'Discussion'.
+}
+add_action('admin_menu', 'remove_submenus');

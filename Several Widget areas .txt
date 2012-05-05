@@ -1,0 +1,28 @@
+<?php
+// In functions.php
+register_sidebar(array(
+	'name' => 'Sidebar',
+ 	'id' => 'sidebar',
+ 	'before_widget' => '<li>',
+ 	'after_widget' => '</li>',
+ 	'before_title' => '<h3>',
+ 	'after_title' => '</h3>'
+ ));
+register_sidebar(array(
+ 	'name' => 'Footer',
+ 	'id' => 'footer',
+ 	'before_widget' => '<li>',
+ 	'after_widget' => '</li>',
+ 	'before_title' => '<h3>',
+ 	'after_title' => '</h3>'
+ ));
+
+// In sidebar.php
+if ( is_sidebar_active('sidebar') ) {
+ dynamic_sidebar('sidebar');
+}
+
+// In footer.php
+if ( is_sidebar_active('footer') ) {
+ dynamic_sidebar('footer');
+}

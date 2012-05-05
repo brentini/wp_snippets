@@ -1,0 +1,11 @@
+<?php
+/*
+Template Name: Cool Home Page
+*/
+?>
+
+Instructions:
+
+To create a new page template, simply create a php-file in your theme folder, and add the following at the top of the file.
+
+You will now be able to choose it when adding a new pag

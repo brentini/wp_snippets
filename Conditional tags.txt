@@ -1,0 +1,9 @@
+<?php
+if( is_front_page() ) {
+  # Do one thing #
+} elseif( is_page( 'About' ) {
+  # Do another thing #
+} elseif( is_admin() ) {
+  # Do the third thing
+}
+?>

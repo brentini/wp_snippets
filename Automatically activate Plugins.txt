@@ -1,0 +1,18 @@
+<?php
+// get already activated plugins
+$plugins = get_option('active_plugins');
+if($plugins){
+    $puginsToActiv = array('Plugin1', 'Plugin2', 'Plugin3');
+    foreach ($puginsTostActiv as $plugin){
+        if (!in_array($plugin, $plugins)) {
+             array_push($plugins,$plugin);
+             update_option('active_plugins',$plugins);
+        }
+    }
+}
+?>
+
+
+Instructions:
+
+Plugins can be activated automatically via the wp-config.php. The Plugins are to be activated simply passed as an array.

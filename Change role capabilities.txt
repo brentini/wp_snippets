@@ -1,0 +1,8 @@
+<?php
+# Get the user role #
+$edit_contributor = get_role('contributor');
+# Contributor can upload media #
+$edit_contributor->add_cap('upload_files');
+# Contributor can no longer delete posts #
+$edit_contributor->remove_cap('delete_posts');
+?>

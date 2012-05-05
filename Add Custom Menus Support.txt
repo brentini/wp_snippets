@@ -1,0 +1,14 @@
+<?php function add_menus() {
+  register_nav_menus(
+	  array(
+		  'main_nav' => 'The main menu',
+	));
+}
+add_action( 'init', 'add_menus' );
+?>
+
+Instructions:
+
+This is how you add support for the new menu-system in WordPress. To show your new menu in the theme you have to add the following in for example header.php: 
+
+wp_nav_menu(array('menu' => 'MENUNAME', 'container' => 'ul', 'menu_id' => 'YOUR_MENUS_ID'));

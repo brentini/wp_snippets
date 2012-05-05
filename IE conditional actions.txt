@@ -1,0 +1,6 @@
+<?php
+global $is_IE;
+if ($is_IE) {
+	// Do stuff
+}
+?>
