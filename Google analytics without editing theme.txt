@@ -1,0 +1,6 @@
+<?php
+add_action('wp_footer', 'ga');
+ 
+function ga() { ?>
+    // Paste your Google Analytics code here
+<?php } ?>

@@ -1,0 +1,13 @@
+function show_file_func( $atts ) {
+  extract( shortcode_atts( array(
+    'file' => ''
+  ), $atts ) );
+  if ($file!='')
+    return @file_get_contents($file);
+}
+add_shortcode( 'show_file', 'show_file_func' );
+
+
+
+
+shortcode in post: [show_file file="http://www.mysite.com/somefile.html"]
