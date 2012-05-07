@@ -1,0 +1,11 @@
+add_filter('redirect_post_location', 'redirect_to_post_on_publish_or_save');
+function redirect_to_post_on_publish_or_save($location){
+    if (isset($_POST['save']) || isset($_POST['publish'])) {
+        if (preg_match("/post=([0-9]*)/", $location, $match)) {
+            $pl = get_permalink($match[1]);
+            if ($pl) {
+                wp_redirect($pl);
+            }
+        }
+    }
+}

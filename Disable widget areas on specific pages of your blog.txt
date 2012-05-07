@@ -1,0 +1,8 @@
+<?php
+add_filter( 'sidebars_widgets', 'disable_sidebar_widgets' );
+function disable_sidebar_widgets( $sidebars_widgets ) {
+        if ( is_page('about-me') )
+                $sidebars_widgets = array( false );
+                return $sidebars_widgets;
+}
+?>

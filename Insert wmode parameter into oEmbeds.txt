@@ -1,0 +1,8 @@
+add_filter( 'oembed_result', 'slt_wmode_opaque', 10, 3 );
+function slt_wmode_opaque( $html, $url, $args ) {
+        if ( strpos( $html, '<param name="movie"' ) !== false )
+                $html = preg_replace( '|</param>|', '</param><param name="wmode" value="opaque"></param>', $html, 1 );
+        if ( strpos( $html, '<embed' ) !== false )
+                $html = str_replace( '<embed', '<embed wmode="opaque"', $html );
+        return $html;
+}

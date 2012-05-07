@@ -1,0 +1,8 @@
+WordPress will let you create custom sidebar templates using the same file naming method as other templates eg: sidebar-{name}.php. Replacing the get_sidebar() function with this snippet will let you define a custom sidebar for specific posts using custom fields.
+
+For more details on sidebar templates via this document, http://codex.wordpress.org/Function_Reference/get_sidebar
+
+<?php
+          $sidebar = get_post_meta($post->ID, "sidebar", true);
+          get_sidebar($sidebar);
+?>

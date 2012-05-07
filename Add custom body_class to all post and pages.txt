@@ -1,0 +1,11 @@
+add_filter('body_class','add_body_classes');
+function add_body_classes($classes) {
+    $classes[] = 'my-class-one';
+    $classes[] = 'my-class-two';
+    $classes[] = 'my-class-three';
+    return $classes;
+}
+
+
+//Adding this snippet to the functions.php of your wordpress theme will let you add specific classes to wordpress body_class function.
+//Then add <?php body_class(); ?> to the body tag within header.php.

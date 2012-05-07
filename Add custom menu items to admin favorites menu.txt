@@ -1,0 +1,8 @@
+function favorites_menu_items($actions) {
+    $actions['plugins.php'] = array('Plugins', 'activate_plugins');
+    $actions['plugin-install.php'] = array('Plugin Add new', 'activate_plugins');
+    $actions['plugin-editor.php'] = array('Plugin editor', 'activate_plugins');
+    // asort($actions);
+    return $actions;
+}
+add_filter('favorite_actions', 'favorites_menu_items');

@@ -1,0 +1,4 @@
+<?
+        global $shortcode_tags;
+        echo "<pre>"; print_r($shortcode_tags); echo "</pre>";
+?>

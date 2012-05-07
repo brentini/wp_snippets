@@ -1,0 +1,8 @@
+function mfields_add_more_to_post_class( $classes ) {
+    global $post;
+    if ( ( is_archive() || is_home() ) && false !== strpos( $post->post_content, '<!--more-->' ) && ! in_array( 'more', $classes ) ) {
+        $classes[] = 'more';
+    }
+    return $classes;
+}
+add_filter( 'post_class', 'mfields_add_more_to_post_class' );

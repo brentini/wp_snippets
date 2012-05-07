@@ -1,0 +1,13 @@
+add_action('admin_menu', 'sub_menu_function');
+function sub_menu_function() {
+        add_theme_page('Sub menu title', 'Sub menu title', 'manage_options', 'sub-menu-slug', 'sub_menu_panel');
+}
+function sub_menu_panel() {
+        if (!current_user_can('manage_options'))  {
+                wp_die( __('You do not have sufficient permissions to access this page.') );
+        }
+        echo '<div class="wrap"><div id="icon-options-general" class="icon32">
+                <br>
+        </div>
+        <h2>Sub menu title</h2></div>';
+}

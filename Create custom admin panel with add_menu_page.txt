@@ -1,0 +1,10 @@
+add_action('admin_menu', 'create_custom_panel');
+function create_custom_panel() {
+    add_menu_page('Custom panel', 'Custom panel', 'manage_options', 'custom-panel', 'custom_panel');
+}
+function custom_panel(){
+                echo '<div class="wrap"><div id="icon-options-general" class="icon32">
+                        <br>
+                </div>
+                <h2>Custom panel</h2></div>';
+}

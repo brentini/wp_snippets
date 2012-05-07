@@ -1,0 +1,7 @@
+<?php
+        global $current_user;
+        get_currentuserinfo();
+        echo get_avatar( $current_user->ID, 64 );
+ ?>
+ 
+ Adding this snippet to your wordpress template will display the currently logged in users avatar in your theme. To adjust the side of the avatar change the number 64 within the get_avatar function default is 96 and max size is 512.

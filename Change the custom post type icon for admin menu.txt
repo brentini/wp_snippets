@@ -1,0 +1,13 @@
+$args = array(
+        'label' => __('Products'),
+        'singular_label' => __('Product'),
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'page',
+        'hierarchical' => false,
+        'rewrite' => true,
+        'query_var' => 'products',
+        'menu_icon' => 'http://site.com/wp-content/themes/theme_name/i/icon_16x16.png',
+        'supports' => array('title','editor','comments','thumbnail')
+);
+register_post_type( 'product' , $args );

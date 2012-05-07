@@ -1,0 +1,15 @@
+<form action="<? bloginfo('url'); ?>" method="get">
+<select name="page_id" id="page_id">
+<?php
+global $post;
+$args = array( 'numberposts' => -1);
+$posts = get_posts($args);
+foreach( $posts as $post ) : setup_postdata($post); ?>
+        <option value="<? echo $post->ID; ?>"><?php the_title(); ?></option>
+<?php endforeach; ?>
+</select>
+<input type="submit" name="submit" value="view" />
+</form>
+
+
+Adding this snippet to your wordpress theme will display a list of all your posts within a dropdown menu. You can adjust the number of posts displayed by changing the -1 value within the $args array.

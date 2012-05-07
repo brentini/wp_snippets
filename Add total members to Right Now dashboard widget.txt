@@ -1,0 +1,14 @@
+function dashboard_wps_user_count() {
+    global $wpdb;
+    $users = $wpdb->get_var("SELECT COUNT(ID) FROM $wpdb->users");
+?>
+<table>
+    <tbody>
+       <tr class="first">
+          <td class="first b b_pages"><a href="users.php"><? echo $users; ?></a></td>
+          <td class="t pages"><a href="users.php">Members</a></td>
+       </tr>
+     </tbody>
+</table>
+<?}
+add_action( 'right_now_content_table_end', 'dashboard_wps_user_count');

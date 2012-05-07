@@ -1,0 +1,15 @@
+add_filter( 'plugin_action_links', 'slt_lock_plugins', 10, 4 );
+function slt_lock_plugins( $actions, $plugin_file, $plugin_data, $context ) {
+    // Remove edit link for all
+    if ( array_key_exists( 'edit', $actions ) )
+        unset( $actions['edit'] );
+    // Remove deactivate link for crucial plugins
+    if ( array_key_exists( 'deactivate', $actions ) && in_array( $plugin_file, array(
+        'slt-custom-fields/slt-custom-fields.php',
+        'slt-file-select/slt-file-select.php',
+        'slt-simple-events/slt-simple-events.php',
+        'slt-widgets/slt-widgets.php'
+    )))
+        unset( $actions['deactivate'] );
+    return $actions;
+}

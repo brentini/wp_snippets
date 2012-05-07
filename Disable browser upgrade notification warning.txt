@@ -1,0 +1,4 @@
+function disable_browser_upgrade_warning() {
+    remove_meta_box( 'dashboard_browser_nag', 'dashboard', 'normal' );
+}
+add_action( 'wp_dashboard_setup', 'disable_browser_upgrade_warning' );

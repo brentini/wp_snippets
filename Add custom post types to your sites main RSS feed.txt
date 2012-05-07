@@ -1,0 +1,6 @@
+function custom_feed_request( $vars ) {
+ if (isset($vars['feed']) && !isset($vars['post_type']))
+  $vars['post_type'] = array( 'post', 'site', 'plugin', 'theme', 'person' );
+ return $vars;
+}
+add_filter( 'request', 'custom_feed_request' );

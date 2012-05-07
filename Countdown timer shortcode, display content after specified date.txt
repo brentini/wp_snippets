@@ -1,0 +1,22 @@
+Adding the first snippet to the functions.php of your wordpress theme will let you use a shortcode to place a countdown timer on specific content within your post. Add the shortcode within the second snippet to your post with content you want to display after the specified date.
+
+function content_countdown($atts, $content = null){
+  extract(shortcode_atts(array(
+     'month' => '',
+     'day'   => '',
+     'year'  => ''
+    ), $atts));
+    $remain = ceil((mktime( 0,0,0,(int)$month,(int)$day,(int)$year) - time())/86400);
+    if( $remain > 1 ){
+        return $daysremain = "<div class=\"event\">Just <b>($remain)</b> days until content is available</div>";
+    }else if($remain == 1 ){
+        return $daysremain = "<div class=\"event\">Just <b>($remain)</b> day until content is available</div>";
+    }else{
+        return $content;
+    }
+}
+add_shortcode('cdt', 'content_countdown');
+
+[cdt month="10" day="17" year="2011"]
+This is content that will only be shown after a set number of days.
+[/cdt]

@@ -1,0 +1,5 @@
+function custom_login_message() {
+$message = '<p class="message">Welcome, if you haven't already read our <a href="#">terms of service</a> please do so before you register.</p><br />';
+return $message;
+}
+add_filter('login_message', 'custom_login_message');

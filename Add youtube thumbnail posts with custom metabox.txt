@@ -1,0 +1,58 @@
+add_action("admin_init", "youtube_init");
+        add_action('save_post', 'save_youtube_link');
+        function youtube_init(){
+                add_meta_box("youtube", "Youtube thumbnail code", "youtube_link", "post", "normal", "high");
+        }
+        function youtube_link(){
+                global $post;
+                $custom  = get_post_custom($post->ID);
+                $link    = $custom["link"][0];
+?>
+<div class="link_header">
+        <input name="link" class="form-input-tip" value="<?php echo $link; ?>" /><br />
+</div>
+<div class="yt-thumb"><img src="http://img.youtube.com/vi/<? echo $custom['link'][0]; ?>/0.jpg" width="30" height="30" /></div>
+<p>Please place id for the youtube file here! This sample URL ID is hilighted in <span class="yt-id">red</span>. After v= and before & symbol if one exists. <br /> http://www.youtube.com/watch?v=<span class="yt-id">oHg5SJYRHA0</span>&feature=player_embedded</p><div class="yt-clear"></div>
+<?php
+        }
+function save_youtube_link(){
+global $post;
+if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {return $post->ID;}
+        update_post_meta($post->ID, "link", $_POST["link"]);
+}
+function youtube_thumb($w,$h,$t){
+     $custom = get_post_custom($post->ID);
+     return '<img src="http://img.youtube.com/vi/'.$custom['link'][0].'/'.$t.'.jpg" width="'.$w.'" height="'.$h.'" />';
+}
+add_action('admin_head', 'youtube_css');
+function youtube_css() {
+        echo'
+        <style type="text/css">
+                .link_header{margin:0px 5px 0px 0px;}
+                .link_header input{
+                        font-size:13px;
+                        color:#666;
+                        border:solid 1px #ccc;
+                        -moz-border-radius:3px;
+                        padding:2px;
+                        margin:0px 10px 0px 0px;
+                        width:100%;
+                        }
+                .yt-clear{clear:both;}
+                .yt-id{color:#ff0000;font-weight:bold;}
+                .yt-thumb{
+                        float:left;
+                        margin:6px 6px 0px 0px;
+                        border:solid 1px #ccc;
+                        }
+        </style>
+        ';
+}
+
+
+
+
+snippet for theme:<?
+        echo youtube_thumb('480','360','0');
+?>
+

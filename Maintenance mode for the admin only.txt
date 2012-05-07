@@ -1,0 +1,9 @@
+function admin_maintenace_mode() {
+    global $current_user;
+    get_currentuserinfo();
+    if($current_user->user_login != 'ADMIN_NAME') { ?>
+                        <style> .updated{margin:30px !important;} </style><?
+                        wp_die('<div id="message" class="updated"><p><b>Maintenance mode:</b> We are currently making updates. Everything will be online shortly.</p></div>');
+                }
+}
+add_action('admin_head', 'admin_maintenace_mode');

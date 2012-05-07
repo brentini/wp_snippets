@@ -1,0 +1,14 @@
+add_action( 'admin_notices', 'custom_error_notice' );
+function custom_error_notice(){
+     global $current_screen;
+     if ( $current_screen->parent_base == 'themes' )
+          echo '<div class="error"><p>Warning - If you modify template files this could cause problems with your website.</p></div>';
+}
+
+
+
+
+
+
+
+Adding this snippet to the functions.php of your wordpress theme will display a custom error message displayed within the “theme” admin screen. Change the parent_base to edit, tools etc, to display message on another admin screen.

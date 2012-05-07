@@ -1,0 +1,3 @@
+<?
+         add_filter('gallery_style', create_function('$a', 'return "<div class=\'gallery\'>";'));
+?>

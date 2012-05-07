@@ -1,0 +1,14 @@
+add_shortcode( 'youtube', 'my_youtube_shortcode' );
+function my_youtube_shortcode( $atts ) {
+    global $wp_embed;
+    if ( empty($atts['id']) )
+        return '';
+    // Construct the YouTube URL
+    $url = 'http://www.youtube.com/watch?v=' . $atts['id'];
+    return $wp_embed->shortcode( $atts, $url );
+}
+
+
+
+then in the editor:
+[youtube id="000000"]

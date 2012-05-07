@@ -1,0 +1,4 @@
+        function remove_feed_generator() {
+        return '';
+        }
+        add_filter('the_generator', 'remove_feed_generator');

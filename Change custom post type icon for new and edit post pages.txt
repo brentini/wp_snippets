@@ -1,0 +1,13 @@
+add_action( 'admin_head-post.php', 'post_type_icon');
+add_action( 'admin_head-post-new.php', 'post_type_icon');
+function post_type_icon() {
+        global $post_type;
+        ?>
+        <style>
+        <?php if($post_type == 'products'){ ?>
+        #icon-edit {
+                background: url('<?php echo 'http://site.com/wp-content/themes/theme_name/i/icon_24x24.png';?>') no-repeat; }
+        <?php } ?>
+        </style>
+        <?php
+}

@@ -1,0 +1,78 @@
+Adding this snippet to the functions.php of your wordpress theme will add a metabox to your post editing screen with a select menu containing all audio files. Add the second snippet to display the specified audio URL in your wordpress theme.
+
+=============================================================================================================================================       
+
+	   add_action("admin_init", "audio_init");
+        add_action('save_post', 'save_audio_link');
+        function audio_init(){
+                add_meta_box("mp3-audio", "MP3 AUDIO", "audio_link", "post", "normal", "low");
+                }
+        function audio_link(){
+                global $post;
+                $custom  = get_post_custom($post->ID);
+                $link    = $custom["link"][0];
+                $count   = 0;
+                echo '<div class="link_header">';
+                $query_audio_args = array(
+                        'post_type' => 'attachment',
+                        'post_mime_type' =>'audio',
+                        'post_status' => 'inherit',
+                        'posts_per_page' => -1,
+                        );
+                $query_audio = new WP_Query( $query_audio_args );
+                $audio = array();
+                echo '<select name="link">';
+                echo '<option class="audio_select">SELECT AUDIO FILE</option>';
+                foreach ( $query_audio->posts as $file) {
+                   if($link == $audio[]= $file->guid){
+                      echo '<option value="'.$audio[]= $file->guid.'" selected="true">'.$audio[]= $file->guid.'</option>';
+                         }else{
+                      echo '<option value="'.$audio[]= $file->guid.'">'.$audio[]= $file->guid.'</option>';
+                         }
+                        $count++;
+                }
+                echo '</select><br /></div>';
+                echo '<p>Selecting an audio file from the above list to attach to this post.</p>';
+                echo '<div class="audio_count"><span>Files:</span> <b>'.$count.'</b></div>';
+        }
+        function save_audio_link(){
+                global $post;
+                if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE){ return $post->ID; }
+                update_post_meta($post->ID, "link", $_POST["link"]);
+        }
+        add_action( 'admin_head', 'audio_css' );
+        function audio_css() {
+                echo '<style type="text/css">
+                .audio_select{
+                        font-weight:bold;
+                        background:#e5e5e5;
+                        }
+                .audio_count{
+                        font-size:9px;
+                        color:#0066ff;
+                        text-transform:uppercase;
+                        background:#f3f3f3;
+                        border-top:solid 1px #e5e5e5;
+                        padding:6px 6px 6px 12px;
+                        margin:0px -6px -8px -6px;
+                        -moz-border-radius:0px 0px 6px 6px;
+                        -webkit-border-radius:0px 0px 6px 6px;
+                        border-radius:0px 0px 6px 6px;
+                        }
+                .audio_count span{color:#666;}
+                        </style>';
+        }
+        function audio_file_url(){
+                global $wp_query;
+                $custom = get_post_custom($wp_query->post->ID);
+                echo $custom['link'][0];
+        }
+		
+		
+		================================================================
+		
+		snippet :  PHP
+
+<?
+        audio_file_url()
+?>

@@ -1,0 +1,10 @@
+function create_meta_desc() {
+    global $post;
+if (!is_single()) { return; }
+    $meta = strip_tags($post->post_content);
+    $meta = strip_shortcodes($post->post_content);
+    $meta = str_replace(array("\n", "\r", "\t"), ' ', $meta);
+    $meta = substr($meta, 0, 125);
+    echo "<meta name='description' content='$meta' />";
+}
+add_action('wp_head', 'create_meta_desc');

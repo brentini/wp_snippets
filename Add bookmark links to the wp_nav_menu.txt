@@ -1,0 +1,20 @@
+add_filter('wp_nav_menu_items', 'wps_add_bookmarks', 10, 2);
+function wps_add_bookmarks($items, $args) {
+        $cat = '2'; // define category
+        $name = 'Bookmarks';
+        $bookmarks = array();
+        $bookmarks = get_bookmarks("category=$cat");
+        if ($bookmarks[0] != '') {
+            $items .= '<li><a href="#">'.$name.'</a><ul class="sub-menu">';
+            foreach ( $bookmarks as $bookmark ) {
+                $items .= '<li><a href="'.clean_url($bookmark->link_url).'"';
+                if($bookmark->link_target){
+                        $items .='target="'.$bookmark->link_target.'" ';}
+                if($bookmark->link_rel){
+                        $items .='rel="'.$bookmark->link_rel.'" ';}
+                $items .= '>'.$bookmark->link_name.'</a></li>';
+            }
+            $items .= '</ul>';
+          }
+        return $items;
+}

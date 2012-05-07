@@ -1,0 +1,17 @@
+function get_related_author_posts() {
+    global $authordata, $post;
+    $authors_posts = get_posts( array( 'author' => $authordata->ID, 'post__not_in' => array( $post->ID ), 'posts_per_page' => 5 ) );
+    $output = '<ul>';
+    foreach ( $authors_posts as $authors_post ) {
+        $output .= '<li><a href="' . get_permalink( $authors_post->ID ) . '">' . apply_filters( 'the_title', $authors_post->post_title, $authors_post->ID ) . '</a></li>';
+    }
+    $output .= '</ul>';
+    return $output;
+}
+
+
+
+Adding the first snippet to the functions.php of your wordpress theme will let you display 5 related posts by the current author. Add the second snippet into the single.php of your wordpress theme in the location you wish to display the related posts. This is a great little snippet from people over at wpbeginner.com.
+
+
+<?php echo get_related_author_posts(); ?>
