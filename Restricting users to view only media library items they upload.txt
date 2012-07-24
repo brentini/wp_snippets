@@ -1,0 +1,9 @@
+function my_files_only( $wp_query ) {
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/upload.php' ) !== false ) {
+        if ( !current_user_can( 'level_5' ) ) {
+            global $current_user;
+            $wp_query->set( 'author', $current_user->id );
+        }
+    }
+}
+add_filter('parse_query', 'my_files_only' );

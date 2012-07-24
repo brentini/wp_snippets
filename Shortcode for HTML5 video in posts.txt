@@ -1,0 +1,13 @@
+function html5_video($atts, $content = null) {
+        extract(shortcode_atts(array(
+                "src" => '',
+                "width" => '',
+                "height" => ''
+        ), $atts));
+        return '<video src="'.$src.'" width="'.$width.'" height="'.$height.'" controls autobuffer>';
+}
+add_shortcode('video5', 'html5_video');
+
+
+
+[video5 src="http://your-site/videos/your-video.mp4" width="720" height="480"]

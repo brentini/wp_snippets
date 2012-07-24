@@ -1,0 +1,23 @@
+//remove-support-for-specific-post-type-features
+
+    author
+    comments
+    custom fields
+    editor
+    excerpt
+    page attributes
+    revisions
+    thumbnail
+    title
+    trackbacks
+    wordpress
+
+Adding this snippet to the functions.php of your wordpress theme will remove support for the specific features bellow from specified post types. Change the word ‘post’ to anything you like including a custom post type name or the default post, page.
+'title' (Post Title) 'editor' (content) 'author' (Author controls) 'thumbnail' (featured image) (current theme must also support Post Thumbnails) 'excerpt' (Excerpt functionality) 'trackbacks' (Options) 'custom-fields' (Custom Fields) 'comments' (also will see comment count balloon on edit screen) 'revisions' (will store revisions) 'page-attributes' (template and menu order) (hierarchical must be true)
+
+
+add_action( 'admin_init', 'wps_cpt_support' );
+function wps_cpt_support() {
+        remove_post_type_support( 'post', 'title' );
+        remove_post_type_support( 'post', 'comments' );
+}

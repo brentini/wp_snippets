@@ -1,0 +1,7 @@
+add_filter( 'ngettext', 'wps_remove_theme_name' );
+if(!function_exists('wps_remove_theme_name')) {
+function wps_remove_theme_name($translated) {
+     $translated = str_ireplace('Theme <span class="b">%1$s</span> with',  '',  $translated );
+     return $translated;
+  }
+}

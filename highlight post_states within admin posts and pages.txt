@@ -1,0 +1,23 @@
+function custom_post_states( $post_states ) {
+   foreach ( $post_states as &$state ){
+   $state = '<span class="'.strtolower( $state ).' states">' . str_replace( ' ', '-', $state ) . '</span>';
+   }
+   return $post_states;
+}
+add_filter( 'display_post_states', 'custom_post_states' );
+function custom_post_states_css(){
+        echo '<style>
+                .post-state .states{
+                        font-size:10px;
+                        padding:3px 8px 3px 8px;
+                        -moz-border-radius:2px;
+                        -webkit-border-radius:2px;
+                        border-radius:2px;
+                        }
+                .post-state .password{background:#000;color:#fff;}
+                .post-state .pending{background:#83CF21 !important;color:#fff;}
+                .post-state .private{background:#E0A21B;color:#fff;}
+                .post-state .draft{background:#006699;color:#fff;}
+              </style>';
+}
+add_action('admin_head','custom_post_states_css');

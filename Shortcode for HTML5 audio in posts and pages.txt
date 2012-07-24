@@ -1,0 +1,15 @@
+function html5_audio($atts, $content = null) {
+        extract(shortcode_atts(array(
+                "src" => '',
+                "autoplay" => '',
+                "preload"=> 'true',
+                "loop" => '',
+                "controls"=> ''
+        ), $atts));
+        return '<audio src="'.$src.'" autoplay="'.$autoplay.'" preload="'.$preload.'" loop="'.$loop.'" controls="'.$controls.'" autobuffer />';
+}
+add_shortcode('audio5', 'html5_audio');
+
+
+[audio5 src="http://your-site/videos/your-video.mp4" loop="true" autoplay="autoplay" preload="auto" loop="loop" controls=""]
+

@@ -1,0 +1,23 @@
+//Adding this snippet to the functions.php of your wordpress theme will check if an option was updated by a user. If so, it will save it back to the default option you’ve set. Should work with almost any site //option. (inspect element on input field and input’s “id” should be the “name” you need.)
+
+
+
+$options = array(
+    array( 'name' => 'thumbnail_size_w', 'value' => '150' ),
+    array( 'name' => 'thumbnail_size_h', 'value' => '150' ),
+    array( 'name' => 'medium_size_w', 'value' => '250' ),
+    array( 'name' => 'medium_size_h', 'value' => '250' ),
+    array( 'name' => 'large_size_w', 'value' => '728' ),
+    array( 'name' => 'large_size_h', 'value' => '728' ),
+    array( 'name' => 'embed_size_w', 'value' => '728' ),
+    array( 'name' => 'embed_size_h', 'value' => '600' ),
+);
+foreach ( $options as $option ) {
+    if ( get_option( $option['name'] ) != $option['value'] ) {
+        update_option( $option['name'], $option['value'] );
+    } else {
+        $deprecated = ' ';
+        $autoload = 'no';
+        add_option( $option['name'], $option['value'], $deprecated, $autoload );
+    }
+}

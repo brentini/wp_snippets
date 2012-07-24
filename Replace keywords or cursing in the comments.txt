@@ -1,0 +1,11 @@
+add_filter( 'pre_comment_content', 'wps_filter_comment' );
+function wps_filter_comment($comment) {
+        $replace = array(
+                // 'WORD TO REPLACE' => 'REPLACE WORD WITH THIS'
+                'foobar' => '*****',
+                'hate' => 'love',
+                'zoom' => '<a href="http://zoom.com">zoom</a>'
+        );
+        $comment = str_replace(array_keys($replace), $replace, $comment);
+        return $comment;
+}

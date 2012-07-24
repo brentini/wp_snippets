@@ -1,0 +1,15 @@
+add_shortcode('iframe', array('iframe_shortcode', 'shortcode'));
+class iframe_shortcode {
+    function shortcode($atts, $content=null) {
+          extract(shortcode_atts(array(
+               'url'      => '',
+               'scrolling'      => 'no',
+               'width'      => '100%',
+               'height'      => '500',
+               'frameborder'      => '0',
+               'marginheight'      => '0',
+          ), $atts));
+          if (empty($url)) return '<!-- Iframe: You did not enter a valid URL -->';
+     return '<iframe src="'.$url.'" title="" width="'.$width.'" height="'.$height.'" scrolling="'.$scrolling.'" frameborder="'.$frameborder.'" marginheight="'.$marginheight.'"><a href="'.$url.'" target="_blank">'.$url.'</a></iframe>';
+    }
+}

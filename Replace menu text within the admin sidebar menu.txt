@@ -1,0 +1,6 @@
+add_filter(  'gettext',  'change_post_to_article'  );
+add_filter(  'ngettext',  'change_post_to_article'  );
+function change_post_to_article( $translated ) {
+     $translated = str_ireplace(  'Post',  'Article',  $translated );
+     return $translated;
+}

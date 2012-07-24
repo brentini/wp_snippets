@@ -1,0 +1,5 @@
+function remove_favorites_menu($actions) {
+    $actions = array();
+     return $actions;
+}
+add_filter('favorite_actions', 'remove_favorites_menu');

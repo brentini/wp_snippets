@@ -1,0 +1,4 @@
+function remove_screen_options(){
+    return false;
+}
+add_filter('screen_options_show_screen', 'remove_screen_options');
